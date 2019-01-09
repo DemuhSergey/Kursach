@@ -1,0 +1,44 @@
+﻿@model Kursach.Models.LoginViewModel
+
+
+@{
+    ViewBag.Title = "Авторизация";
+    Session["Role"] = null;
+}
+<link href="@Url.Content("~/style.css")" rel="stylesheet" type="text/css" />
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <h2>@ViewBag.Title</h2>
+                <br />
+            </div>
+            <div class="col-md-offset-4 col-md-8">
+                @Html.TextBoxFor(model => model.Login, new { @class = "form-control", @placeholder = "Логин" })
+                @Html.ValidationMessageFor(model => model.Login)
+            </div>
+            </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                @Html.PasswordFor(model => model.Pasword, new { @class = "form-control", @placeholder = "Пороль" })
+                @Html.ValidationMessageFor(model => model.Pasword)
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input type="submit" value="Войти" class="btn btn-primary btn-block btn-lg" />
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,16 @@
+﻿body{
+    margin-top: 40px;
+    color: #222222;
+    text-align:justify;
+}
+.inner-content{
+    	border: 2px solid #FFFFFF;
+        border-radius: 6px;
+       	box-shadow: 0 0 6px #241A14;
+       
+}
+img{
+    padding-left: 150px;
+    width:900px;
+    height:600px;
+}

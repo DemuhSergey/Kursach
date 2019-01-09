@@ -1,0 +1,30 @@
+﻿.button_registration{
+    font-size: 25px;
+	text-decoration: none;
+	opacity: 0.9;
+	color: #6E7176;
+	border: 2px solid #241A14;
+	border-radius: 20px;
+    margin-right: 800px;
+    margin-top: 10px;
+    padding-left: 4px;
+    text-decoration: none;
+}
+.button_registration:hover{
+    opacity: 1;
+	background-color: #FF4B5D;
+    text-decoration: none;
+}
+.link_registration{
+    text-decoration: none;
+}
+body{
+    background: url(http://html-templates.info/images/pages/140520040125.jpg);
+    margin-top: 150px;
+}
+h2{
+    color: #EEE3CF;
+    margin-left: 40px;
+}
+
+

@@ -1,0 +1,58 @@
+﻿@model Kursach.Models.ContentViewModel
+
+@{
+    ViewBag.Title = "Добавить статью";
+}
+<link href="@Url.Content("~/style.css")" rel="stylesheet" type="text/css" />
+
+
+@using (Html.BeginForm("Create", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                <h2>@ViewBag.Title</h2>
+                <br />
+                <input type="file" name="uploadImage" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                @Html.TextAreaFor(model => model.SportDetail, new { @class = "form-control", @placeholder = "Спортивные детали" })
+                @Html.ValidationMessageFor(model => model.SportDetail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                @Html.TextAreaFor(model => model.FullDetail, new { @class = "form-control", @placeholder = "Полная инфа о статье" })
+                @Html.ValidationMessageFor(model => model.FullDetail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                @Html.TextAreaFor(model => model.Title, new { @class = "form-control", @placeholder = "Заглавие" })
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                @Html.DropDownList("IdSport", String.Empty)
+                @Html.ValidationMessageFor(model => model.IdSport)
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-danger btn-lg" style="padding-right: 110px; padding-left: 110px; margin-left:195px;" />
+            </div>
+        </div>
+    </div>
+}

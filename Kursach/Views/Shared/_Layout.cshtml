@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Спортивный портал", "Index", "Content", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Футбол","Football","Content")</li>
+                    <li>@Html.ActionLink("Хоккей", "Hockey", "Content")</li>
+                    <li>@Html.ActionLink("Бокс", "Box", "Content")</li>
+                    @if (Session["Role"] == null)
+                    {
+                     <div class="btn-group" style="margin-left: 500px">
+                        <button class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#222222; color:white; margin-top:10px;">Здраствуйте, Гость<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Войти", "Login", "Account")</li>
+                            <li>@Html.ActionLink("Зарегистрироваться", "Create", "Account")</li>
+                        </ul>
+                    </div>
+                    }
+                    @if (Session["Role"] != null && Session["Role"].ToString() != "admin")
+                    {
+                        <div class="btn-group" style="margin-left: 500px">
+                            <button class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#222222; color:white; margin-top:10px;">Здраствуйте, @Session["Name"].ToString() <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Выйти", "Login", "Account")</li>
+                            </ul>
+                        </div>
+                    }
+                    @if (Session["Role"] != null && Session["Role"].ToString() == "admin")
+                    {
+                        <div class="btn-group" style="margin-left: 500px">
+                            <button class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#222222; color:white; margin-top:10px;">Здраствуйте, @Session["Name"].ToString() <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Выйти", "Login", "Account")</li>
+                                <li>@Html.ActionLink("Добавить новость", "Create", "Content")</li>
+                            </ul>
+                        </div>
+                    }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

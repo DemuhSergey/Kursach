@@ -1,0 +1,60 @@
+﻿@model  Kursach.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Регистрация";
+}
+
+<link href="@Url.Content("~/style.css")" rel="stylesheet" type="text/css" />
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <h2>@ViewBag.Title</h2>
+                <br />
+                @Html.TextBoxFor(model => model.Firstname, new { @class = "form-control", @placeholder = "Имя" })
+                @Html.ValidationMessageFor(model => model.Firstname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                @Html.TextBoxFor(model => model.Lastname, new { @class = "form-control", @placeholder = "Фамилия" })
+                @Html.ValidationMessageFor(model => model.Lastname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                @Html.TextBoxFor(model => model.Login, new { @class = "form-control", @placeholder = "Логин" })
+                @Html.ValidationMessageFor(model => model.Login)
+            </div>
+        </div>
+
+        <div class="form-group">
+           <div class="col-md-offset-4 col-md-8">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "E-mail" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                @Html.PasswordFor(model => model.Pasword, new { @class = "form-control", @placeholder = "Пороль" })
+                @Html.ValidationMessageFor(model => model.Pasword)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input type="submit" value="Регистрация" class="btn btn-danger btn-lg" style="padding-right: 85px; padding-left: 85px;" />
+            </div>
+        </div>
+    </div>
+}
